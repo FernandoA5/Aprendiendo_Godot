@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/GrupoEnemigos.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Enemigo.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1179, 42, 0, 0, 0, 0, 1041.09, 189.98, 0, 0, 0, 0, 919, 325, 0, 0, 0, 0, 876, 740, 0, 0, 0, 0, 815, 424, 0, 0, 0, 0, 783, 210, 0, 0, 0, 0, 691, 49, 0, 0, 0, 0, 673, 194, 0, 0, 0, 0, 647, 272, 0, 0, 0, 0, 625, 325, 0, 0, 0, 0, 607, 357, 0, 0, 0, 0, 577, 316, 0, 0, 0, 0, 543, 280, 0, 0, 0, 0, 504, 361, 0, 0, 0, 0, 481, 391, 0, 0, 0, 0, 481, 474, 0, 0, 0, 0, 374, 712, 0, 0, 0, 0, 320, 509, 0, 0, 0, 0, 299, 391, 0, 0, 0, 0, 249, 341, 0, 0, 0, 0, 245, 266, 0, 0, 0, 0, 217, 231, 0, 0, 0, 0, 188, 170, 0, 0, 0, 0, 178, 110, 0, 0, 0, 0, 135, 70, 0, 0, 0, 0, 111, 182, 0, 0, 0, 0, 94, 303, 0, 0, 0, 0, -11, 377, 0, 0, 0, 0, -90, 452 )
+}
+
+[node name="GrupoEnemigos" type="Path2D"]
+position = Vector2( 89, -29 )
+curve = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( 1179, 42 )
+rotate = false
+loop = false
+
+[node name="Enemigo" parent="PathFollow2D" instance=ExtResource( 3 )]
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="."]
+position = Vector2( 1110.84, 115.134 )
+offset = 100.0
+rotate = false
+loop = false
+
+[node name="Enemigo" parent="PathFollow2D2" instance=ExtResource( 3 )]
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="."]
+position = Vector2( 1042.64, 188.325 )
+offset = 200.0
+rotate = false
+loop = false
+
+[node name="Enemigo" parent="PathFollow2D3" instance=ExtResource( 3 )]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 992, 265 )
+
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
